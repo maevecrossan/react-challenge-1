@@ -60,7 +60,7 @@ class Content extends Component {
                 <div className={css.SearchResults}>
                     {
                     this.state.isLoaded ?
-                        <PostItem savedPosts={savedPosts.savedPosts} />
+                        <PostItem savedPosts={this.state.posts} />
                     :<Loader />
                     }
                 </div>
