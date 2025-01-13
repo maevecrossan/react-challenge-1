@@ -9,25 +9,52 @@ class Content extends Component {
         super(props);
 
         this.state = {
-            isLoaded: false
+            isLoaded: false,
+            posts: [],
         }
     }
 
     componentDidMount() {
         setTimeout(() => {
             this.setState({
-                isLoaded: true
+                isLoaded: true,
+                posts: savedPosts.savedPosts,
             })
         }, 2000)
+    }
+
+    handleChange = (e) => {
+        const name = e.target.value.toLowerCase();
+        const filteredPosts = savedPosts.savedPosts.filter((post)=>{
+            return post.name.toLowerCase().includes(name);
+        })
+        
+        this.setState({
+            posts: filteredPosts
+        })
     }
 
     render() {
         return (
             <div className={css.Content}>
-                <div>
-                    <h1 className={css.TitleBar}>
+                <div className={css.TitleBar}>
+                    <h1>
                         My Photos
                     </h1>
+
+                    <form>
+                        <label htmlFor='searchInput'>
+                            Search
+                        </label>
+
+                        <input 
+                        type='search'
+                        id='searchInput' 
+                        placeholder='By Author' 
+                        onChange={(e) => this.handleChange(e)}
+                        />
+                        <h4>posts found: {this.state.posts.length}</h4>
+                    </form>
                 </div>
 
                 <div className={css.SearchResults}>

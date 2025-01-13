@@ -9,7 +9,7 @@ function PostItem(props) {
                 <div className={css.SearchItem} key={title}>
                     <p>{title}</p>
                     <p>{name}</p>
-                    <img source={image}></img>
+                    <img source={image} alt='random'></img>
                     <p>{description}</p>
                 </div>
             )                            
