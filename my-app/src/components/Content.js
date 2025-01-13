@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import css from './css/Content.module.css'
-import {savedPosts} from '../posts.json'
+import savedPosts from '../posts.json'
 import PostItem from './PostItem';
 import Loader from './Loader'
 
@@ -33,7 +33,7 @@ class Content extends Component {
                 <div className={css.SearchResults}>
                     {
                     this.state.isLoaded ?
-                        <PostItem savedPosts={savedPosts} />
+                        <PostItem savedPosts={savedPosts.savedPosts} />
                     :<Loader />
                     }
                 </div>
